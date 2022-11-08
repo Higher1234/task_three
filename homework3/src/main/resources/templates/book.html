@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书列表</title>
+</head>
+<body>
+<div class="upper">
+    <div style="margin-left:20px;">图书列表</div>
+</div>
+<div class="bigbox">
+    <div th:each="book:${session.list}" class="label" >
+        <img th:src="@{${book.photo}}" class="picture">
+        <div class="info">
+            <div>图书名称：[[${book.name}]]</div>
+            <div>作者： [[${book.author}]]</div>
+            <div>出版社：[[${book.publisher}]]</div>
+            <div>出版日期：[[${book.date}]]</div>
+            <div>库存数量:  [[${book.number}]]</div>
+        </div>
+    </div>
+    <!--<div class="label" >
+        <img src="http://localhost:8080/book2.png" class="picture">
+        <div class="info">
+            <div>图书名称: c primer plus</div>
+            <div>作者:     steve</div>
+            <div>出版社:   人民邮电出版社</div>
+            <div>出版日:   2010.4</div>
+            <div>库存数量:  200</div>
+        </div>
+    </div>
+    <div class="label" >
+        <img src="http://localhost:8080/book1.png" class="picture">
+        <div class="info">
+            <div>图书名称: c程序设计</div>
+            <div>作者:     谭浩强</div>
+            <div>出版社:   清华大学出版社</div>
+            <div>出版日:   2002.10</div>
+            <div>库存数量:  5</div>
+        </div>
+    </div>
+    <div class="label" >
+        <img src="http://localhost:8080/book2.png" class="picture">
+        <div class="info">
+            <div>图书名称: c primer plus</div>
+            <div>作者:     steve</div>
+            <div>出版社:   人民邮电出版社</div>
+            <div>出版日:   2010.4</div>
+            <div>库存数量:  200</div>
+        </div>
+    </div>-->
+
+
+
+</div>
+<div class="buttonbox">
+    <button onclick="addbook()" class="bot">
+        登记新图书
+    </button>
+</div>
+
+<script >
+    function addbook()
+    {
+        javascript:location.href='http://localhost:8080/newbook'
+        //console.log(.list)
+    }
+</script>
+</body>
+<style>
+    body
+    {
+        background-image: url("http://localhost:8080/bylibrary.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        margin: 0px;
+    }
+    .upper
+    {
+        height: 10vh;
+        background-color:royalblue;
+        font-size: large;
+        font-weight: bolder;
+        color: white;
+        line-height: 10vh;
+    }
+
+    .bigbox
+    {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+    .label
+    {
+        height: 35vh;
+        width: 28vw;
+        background-color: white;
+        opacity: 0.9;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        display: flex;
+        padding: 10px;
+    }
+    .picture
+    {
+        height: 35vh;
+        width: 15vw;
+    }
+    .info
+    {
+        margin-top:10px;
+        line-height: 40px;
+        font-weight: bold;
+        font-size: medium;
+        margin-left: 20px;
+    }
+
+
+
+    .buttonbox
+    {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+    .bot{
+        background-color: cornflowerblue;
+        border-radius: 5px;
+        color: white;
+        height: 6vh;
+        width: 15vw;
+        font-weight: bolder;
+        font-size: large;
+    }
+
+
+</style>
+</html>

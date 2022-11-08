@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul style="line-height: 200%">
+    <li><a href="/sessionadd?para=1">session累加结果加1 该请求为"/sessionadd?para=1"</a></li>
+    <li><a href="/sessionadd?para=2">session累加结果加1 该请求为"/sessionadd?para=2"</a></li>
+</ul>
+<div><p th:utext="'累加结果：'+${session.totalnum}"></p></div>
+</body>
+</html>

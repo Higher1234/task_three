@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<h1 style="margin-top: 140px;margin-left: 50px;justify-content: center;display: flex;">管理员登陆</h1>
+<div style="margin-left: 50px;justify-content: center;display: flex;">用户名：
+    <input id="username" style="margin-left: 24px;" type="text" placeholder="请输入用户名">
+</div>
+<div style="margin-left: 50px;margin-top:30px;justify-content: center;display: flex;">密码：
+    <input id="password" style="margin-left: 40px;" type="password" placeholder="请输入密码">
+</div>
+<button style="margin-left: 750px;margin-top: 20px;background: aqua;justify-content: center;display: flex;" onclick="login()" >登录</button>
+<div style="margin-left: 50px;color:red;margin-top:30px;justify-content: center;display: flex;">登录账号：aaa<br></br>登录密码：123</div>
+<script >
+    function login()
+    {
+        const a = document.getElementById('password')
+        const c = document.getElementById('username')
+        if(c.value === "")
+        {
+            alert("请输入用户名");
+        }
+        else if(a.value === "")
+        {
+            alert("请输入密码！")
+        }
+        else
+        {
+            var temp = document.createElement("form");
+            temp.action = "/first";
+            temp.method = "post";
+            temp.enctype="multipart/form-data"
+            console.log(temp)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="username"
+            opt.value=c.value
+            temp.appendChild(opt)
+            console.log(temp)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="password"
+            opt.value=a.value
+            temp.appendChild(opt)
+            document.body.appendChild(temp)
+            console.log(temp)
+            temp.submit()
+
+        }
+
+    }
+</script>
+</body>
+<style>
+    body {
+        margin: 20px;
+        background-image: url("http://localhost:8080/bylibrary.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+</html>

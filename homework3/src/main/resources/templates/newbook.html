@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登记新图书</title>
+</head>
+<body>
+<div class="box" id="bigbox">
+    <h1 style="margin-top: 20px;">登记新图书</h1>
+    <div style="margin-left: 50px;">图书名称:
+        <input id="bookname" style="margin-left: 24px;" type="text" placeholder="请输入图书名">
+    </div>
+    <div style="margin-left: 50px;">作者:
+        <input id="author" style="margin-left: 55px;" type="text" placeholder="请输入作者">
+    </div>
+    <div style="margin-left: 50px;">出版社:
+        <input id="publisher" style="margin-left: 40px;" type="text" placeholder="请输入出版社">
+    </div>
+    <div style="margin-left: 50px;">出版年份:
+        <input id="publishDate" style="margin-left: 30px;" type="text" placeholder="请输入出版日期">
+    </div>
+    <div style="margin-left: 50px;">库存数量:
+        <input id="num" style="margin-left: 28px;" type="text" placeholder="请输入库存数量">
+    </div>
+    <div style="margin-left: 150px; display: flex; justify-content: space-between;">上传图书照片:
+        <form method="post" enctype="multipart/form-data" id="file_upload">
+            <input class="post" type="file" id="test-image-file"
+                   name="test" accept="image/gif, image/jpeg, image/png, image/jpg">
+        </form>
+    </div>
+
+    <button onclick="submit()" class="bot">确认</button>
+</div>
+<script>
+    function submit()
+    {
+        var bookname = document.getElementById('bookname');
+        var author = document.getElementById('author');
+        var publisher = document.getElementById('publisher');
+        var publisheDate = document.getElementById('publishDate');
+        var num = document.getElementById('num');
+        if(bookname.value === "")
+        {
+            alert("请输入图书名称!");
+        }else if(author.value === "")
+        {
+            alert("请输入作者!");
+        }else if(publisher.value === "")
+        {
+            alert("请输入出版社!");
+        }else if(publisheDate.value === "")
+        {
+            alert("请输入出版年份！");
+        }else if(publisheDate.value > 2022)
+        {
+            alert("输入的出版年份不正确！请重新输入！");
+        }else if(num.value === "")
+        {
+            alert("请输入库存！")
+        }else if(num.value <= 0)
+        {
+            alert("请输入有效库存量！")
+        }
+        else
+        {
+            alert("登记成功！");
+            var temp = document.createElement("form");
+            temp.action = "/newbook";
+            temp.method = "post";
+            temp.enctype="multipart/form-data"
+            console.log(temp)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="bookname"
+            opt.value=bookname.value
+            temp.appendChild(opt)
+            console.log(temp)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="author"
+            opt.value=author.value
+            temp.appendChild(opt)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="publishdate"
+            opt.value=publisheDate.value
+            temp.appendChild(opt)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="publisher"
+            opt.value=publisher.value
+            temp.appendChild(opt)
+            var opt=document.createElement("input");
+            opt.type="hidden"
+            opt.name="num"
+            opt.value=num.value
+            temp.appendChild(opt)
+            bookname.value = "";
+            author.value = "";
+            publisheDate.value = "";
+            publisher.value = "";
+            num.value = "";
+            document.body.appendChild(temp)
+            console.log(temp)
+            temp.submit()
+        }
+    }
+</script>
+</body>
+<style>
+    body {
+        margin: 20px;
+        background-image: url("http://localhost:8080/bylibrary.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .box{
+        margin-top: 130px;
+        border-radius: 10px;
+        margin-left: 520px;
+        width: 35vw;
+        height: 53vh;
+        background-color: orange;
+        text-align: center;
+        line-height: 40px;
+        padding: 10px;
+        opacity:0.9;
+    }
+
+    .bot{
+        margin-top: 15px;
+        width: 10vw;
+        height: 5vh;
+        background-color: aquamarine;
+        color:honeydew;
+        border-radius: 5px;
+        border-color: powderblue;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:large;
+        opacity:1;
+    }
+
+    .post{
+        color:blue;
+        margin-right: 20px;
+    }
+</style>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form  method="post" enctype="multipart/form-data">
+  <div>请输入数字a:<input name="a" type="number">
+  </div>
+  <div>请输入数字b:<input name="b" type="number">
+  </div>
+  <button type="submit">提交</button>
+</form>
+<div><p th:utext="'求和结果：'+${result}"></p>
+</div>
+</body>
+</html>
